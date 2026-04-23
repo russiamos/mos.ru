@@ -61,19 +61,12 @@ button {
 /* =================== PAGE LAYOUT =================== */
 .page {
     display: grid;
-    grid-template-columns: minmax(0, 4fr) 1px minmax(0, 6fr);
+    grid-template-columns: minmax(0, 4fr) minmax(0, 6fr);
     min-height: 100vh;
     max-width: 1240px;
     margin: 0 auto;
     padding: 48px 56px;
     gap: 72px;
-}
-
-.divider {
-    width: 1px;
-    background: #dcdfe4;
-    align-self: stretch;
-    justify-self: center;
 }
 
 /* =================== LEFT PANEL =================== */
@@ -243,7 +236,8 @@ button {
 .field-label {
     display: block;
     font-size: 14px;
-    color: #6b7280;
+    font-weight: 600;
+    color: #1f2937;
     margin-bottom: 8px;
 }
 
@@ -252,14 +246,18 @@ button {
     display: flex;
     align-items: center;
     background: #fff;
-    border: 1px solid var(--color-border-input);
-    border-radius: 10px;
+    border: 1.5px solid #9ca3af;
+    border-radius: 6px;
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.field-input-wrapper:hover {
+    border-color: #6b7280;
 }
 
 .field-input-wrapper:focus-within {
     border-color: var(--color-primary);
-    box-shadow: 0 0 0 3px rgba(18, 81, 229, 0.12);
+    box-shadow: 0 0 0 3px rgba(18, 81, 229, 0.15);
 }
 
 .field-input {
@@ -272,7 +270,7 @@ button {
     font-size: 16px;
     font-family: inherit;
     color: #111;
-    border-radius: 10px;
+    border-radius: 6px;
 }
 
 .field-icon {
@@ -358,14 +356,20 @@ button {
     height: 56px;
     background: var(--color-primary);
     color: #fff;
-    border-radius: 10px;
+    border-radius: 6px;
     font-size: 17px;
     font-weight: 500;
-    transition: background 0.15s ease;
+    transition: background 0.15s ease, opacity 0.15s ease;
 }
 
-.submit-btn:hover {
+.submit-btn:hover:not(:disabled) {
     background: var(--color-primary-hover);
+}
+
+.submit-btn:disabled {
+    background: #a9b4cc;
+    cursor: not-allowed;
+    opacity: 1;
 }
 
 .recommend {
@@ -390,10 +394,6 @@ button {
         grid-template-columns: 1fr;
         gap: 40px;
         padding: 24px;
-    }
-
-    .divider {
-        display: none;
     }
 
     .left-panel {
