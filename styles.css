@@ -1,5 +1,6 @@
 :root {
-    --color-bg: #ffffff;
+    --color-bg-right: #ffffff;
+    --color-bg-left: #f3f4f6;
     --color-text: #1a1a1a;
     --color-text-secondary: #6b7280;
     --color-muted: #9ca3af;
@@ -20,14 +21,25 @@
 }
 
 html, body {
-    height: 100%;
+    min-height: 100%;
     font-family: var(--font);
     color: var(--color-text);
-    background: var(--color-bg);
+    background: var(--color-bg-right);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     font-size: 14px;
     line-height: 1.4;
+}
+
+/* Двухцветный фон: слева — серый, справа — белый */
+body {
+    background: linear-gradient(
+        to right,
+        var(--color-bg-left) 0%,
+        var(--color-bg-left) 50%,
+        var(--color-bg-right) 50%,
+        var(--color-bg-right) 100%
+    );
 }
 
 a {
@@ -59,7 +71,7 @@ button {
 
 .divider {
     width: 1px;
-    background: var(--color-divider);
+    background: #dcdfe4;
     align-self: stretch;
     justify-self: center;
 }
@@ -162,20 +174,6 @@ button {
     margin-top: 40px;
     font-size: 12px;
     color: var(--color-text-secondary);
-}
-
-.instructions-list {
-    list-style: none;
-    margin-bottom: 18px;
-}
-
-.instructions-list li {
-    line-height: 1.9;
-}
-
-.instructions-list a {
-    color: var(--color-link);
-    font-size: 13px;
 }
 
 .copyright {
@@ -358,6 +356,10 @@ button {
 
 /* =================== RESPONSIVE =================== */
 @media (max-width: 900px) {
+    body {
+        background: var(--color-bg-right);
+    }
+
     .page {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -366,6 +368,12 @@ button {
 
     .divider {
         display: none;
+    }
+
+    .left-panel {
+        background: var(--color-bg-left);
+        border-radius: 12px;
+        padding: 20px;
     }
 
     .left-bottom {
